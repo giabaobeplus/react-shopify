@@ -1,9 +1,9 @@
-import ProductList from "./components/ProductList"
+import ProductPage from "./components/ProductPage"
 
 function App() {
   return (
     <>
-      <ProductList/>
+      <ProductPage/>
     </>
   )
 }
