@@ -1,4 +1,4 @@
-import ProductManager from "./components/ProductManager"
+import ProductManager from "./components/products/ProductManager"
 
 function App() {
   return (

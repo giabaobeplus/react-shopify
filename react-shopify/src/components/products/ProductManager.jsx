@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ProductItem from "./ProductItem";
 
 function ProductManager() {
     const [products, setProducts] = useState([
@@ -34,30 +35,34 @@ function ProductManager() {
     }
 
     const handleEditProduct = (id) => {
+        if (!productName.trim()) return;
+
         setProducts((prevProducts => (
             prevProducts.map(product => {
                 if (product.id === id) {
                     return {
                         ...product,
-                        name: "Updated Product"
+                        name: productName.trim()
                     }
                 }
                 return product;
             })
         )))
+
+        setProductName("");
     }
 
     return (
         <>
             {products.map(product => (
-                <div className="mb-3" key={product.id}>
-                    <p>{product.name}</p>
-                    <button className="block" onClick={() => handleDeleteProduct(product.id)}>Delete Product</button>
-                    <button onClick={() => handleEditProduct(product.id)}>Edit Product</button>
-                </div>
+                <ProductItem
+                    key={product.id}
+                    product={product}
+                    onEdit={() => handleEditProduct(product.id)}
+                    onDelete={() => handleDeleteProduct(product.id)} />
             ))}
 
-            <input className="border block mb-3" value={productName} onChange = {(e) => setProductName(e.target.value)}/>
+            <input className="border block mb-3" value={productName} onChange={(e) => setProductName(e.target.value)} />
             <button onClick={handleAddProduct}>Add product</button>
         </>
     )
