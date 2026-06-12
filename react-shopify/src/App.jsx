@@ -1,9 +1,26 @@
-import ProductManager from "./components/products/ProductManager"
+import { Route, Routes, Link } from "react-router-dom"
+import HomePage from "./pages/HomePage"
+import ProductsPage from "./pages/ProductsPage"
 
 function App() {
   return (
     <>
-      <ProductManager />
+      <nav>
+          <Link className="mr-3" to="/">Home</Link>
+          <Link to="/products">Products</Link>
+      </nav>
+
+      <Routes>
+        <Route
+          path="/"
+          element={<HomePage />}
+        />
+
+        <Route
+          path="/products"
+          element={<ProductsPage />}
+        />
+      </Routes>
     </>
   )
 }
