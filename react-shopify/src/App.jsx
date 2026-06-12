@@ -1,9 +1,9 @@
-import ProductPage from "./components/ProductPage"
+import ProductManager from "./components/ProductManager"
 
 function App() {
   return (
     <>
-      <ProductPage/>
+      <ProductManager />
     </>
   )
 }
